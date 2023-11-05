@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import { useContext } from 'react';
+import { AuthContext } from '../../Routes/Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Registration = () => {
+
+    const {createUser}=useContext(AuthContext)
 
     const handleRegistration=e=>{
         e.preventDefault();
@@ -10,14 +16,35 @@ const Registration = () => {
         const email=form.email.value;
         const photo=form.photo.value;
         const password = form.password.value;
-        console.log(name,email,photo,password)
+        console.log(name,email,photo,password);
+
+        //create user
+        createUser(email,password)
+        .then(result=>{
+            console.log(result.user)
+            Swal.fire(
+                'Success!',
+                'Registration Successful',
+                'success'
+              );
+        })
+        .catch(error=>{
+            console.log(error.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops sorry!!!!!!...',
+                text: (`${error.message}`),
+              })
+        })
 
     }
 
 
     return (
         <div>
-          
+          <Helmet>
+            <title>Registration</title>
+          </Helmet>
         
         <Navbar></Navbar>
     <div className="max-w-7xl mx-auto py-16 md:py-20 lg:py-40 px-10">
