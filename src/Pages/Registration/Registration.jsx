@@ -1,40 +1,74 @@
 import { Link } from 'react-router-dom';
-import '../Registration/Registration.css'
+import Navbar from '../Navbar/Navbar';
 
 const Registration = () => {
+
+    const handleRegistration=e=>{
+        e.preventDefault();
+        const form=e.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const photo=form.photo.value;
+        const password = form.password.value;
+        console.log(name,email,photo,password)
+
+    }
+
+
     return (
-        <div className='flex h-[100vh] justify-center items-center'>
-            <div className="box h-[600px]">
-                <span className="borderLine"></span>
-                <form >
-                    <h2 className='text-white font-bold text-xl text-center'>Please Registration</h2>
-                    <div className="inputBox">
-                        <input type="text" required id=""></input>
-                        <span>Username</span>
-                        <i></i>
-                    </div>
-                    <div className="inputBox">
-                        <input type="text" required id=""></input>
-                        <span>Email</span>
-                        <i></i>
-                    </div>
-                    <div className="inputBox">
-                        <input type="text" required id=""></input>
-                        <span>Photo URL</span>
-                        <i></i>
-                    </div>
-                    <div className="inputBox">
-                        <input type="password" required id=""></input>
-                        <span>Password</span>
-                        <i></i>
-                    </div>
-                    <input className='w-full text-white py-3 mt-3 rounded-lg border' type="submit" value="Registration"></input>
-                    <div>
-                        <p>Already Have An Account ? please <Link>Login</Link></p>
-                    </div>
-                </form>
+        <div>
+          
+        
+        <Navbar></Navbar>
+    <div className="max-w-7xl mx-auto py-16 md:py-20 lg:py-40 px-10">
+        
+       <div className="bg-white max-w-md mx-auto p-10 rounded-lg shadow-2xl bg-gradient-to-r from-red-600 to-orange-900">
+      
+
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-white text-center font-bold  ">Please Registration</h2>
+
+          <form onSubmit={handleRegistration} className=" mx-auto">
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text text-white  text-[18px]">Name</span>
+                </label>
+                <input type="text" name="name" placeholder="Your Name" className="input input-bordered" required />
             </div>
-        </div>
+
+            
+
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text text-white  text-[18px]">Email</span>
+                </label>
+                <input type="email" name="email" placeholder="Your Email" className="input input-bordered" required />
+            </div>
+
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text text-white  text-[18px]">Photo URL</span>
+                </label>
+                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
+            </div>
+
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text text-white text-[18px]">Password</span>
+                </label>
+                <input type="password" name="password" placeholder="password" className="input input-bordered" required /> 
+            </div>
+
+          <div className="form-control mt-6">
+                <button className="py-2 md:py-4  border-2 text-white rounded-lg font-bold">Registration</button>
+            </div>
+        </form>
+        <p className="text-[16px] mt-4 text-white font-semibold text-center">Already Have An Account ? please <Link className="text-red-400 hover:underline" to="/Login">Login</Link> </p>
+
+       </div>
+
+     </div>
+  </div>
+    
     );
 };
 
