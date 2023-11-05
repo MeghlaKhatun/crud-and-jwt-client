@@ -1,12 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import { useContext } from 'react';
 import { AuthContext } from '../../Routes/Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import { updateProfile } from 'firebase/auth';
 
 const Registration = () => {
 
+    const navigate=useNavigate()
     const {createUser}=useContext(AuthContext)
 
     const handleRegistration=e=>{
@@ -27,6 +29,15 @@ const Registration = () => {
                 'Registration Successful',
                 'success'
               );
+              navigate("/")
+
+              //updateProfile
+              updateProfile(result.user,{
+                displayName:name,
+                photoURL:photo,
+              })
+              .then(()=>console.log("update"))
+              .catch()
         })
         .catch(error=>{
             console.log(error.message);

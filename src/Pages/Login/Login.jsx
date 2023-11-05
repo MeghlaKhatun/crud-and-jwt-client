@@ -71,6 +71,7 @@ const LogIn = () => {
 
 
                     <h2 className="text-xl md:text-2xl lg:text-3xl text-white text-center font-bold  ">Please Login</h2>
+          
 
                     <form onSubmit={handleLogin} className=" mx-auto">
 

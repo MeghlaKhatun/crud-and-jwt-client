@@ -1,5 +1,4 @@
 import Navbar from "../Navbar/Navbar";
-// import React from 'react'
 import { Typewriter } from 'react-simple-typewriter'
 
 const Banner = () => {
