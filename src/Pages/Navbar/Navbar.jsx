@@ -35,8 +35,12 @@ const Navbar = () => {
                                     {/* Navbar menu content here */}
                                     <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
                                     <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
-                                    <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li>
-                                    {/* <li  className="hover:underline"><NavLink to={"/login"}>Login</NavLink></li> */}
+                                    {/* <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li> */}
+                                    {
+                                        user?.email && <li className="hover:underline"><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+                                    }
+
+                                    {/* login and logout */}
                                     {
                                         user ?
                                             <div >
@@ -51,6 +55,8 @@ const Navbar = () => {
                                 </ul>
                               
                             </nav>
+
+                            {/* profile and name */}
                             <div className="flex flex-col px-2 justify-center overflow-hidden  items-center">
 
                                 <div className="flex justify-center">

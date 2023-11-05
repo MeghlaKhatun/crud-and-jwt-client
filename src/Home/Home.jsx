@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Pages/Banner/Banner";
+import Footer from "../Pages/Footer/Footer";
 
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
             <Banner></Banner>
-            <h2>home</h2>
+            <Footer></Footer>
         </div>
     );
 };
