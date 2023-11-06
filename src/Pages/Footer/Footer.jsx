@@ -4,7 +4,7 @@ const Footer = () => {
         <div>
 
             <footer className=" bg-gray-700 ">
-                <div className="max-w-7xl mx-auto justify-center md:justify-between lg:justify-evenly footer p-10 text-base-content">
+                <div className="max-w-7xl mx-auto justify-center md:justify-between footer p-10 text-base-content">
                     <nav className="flex flex-col items-center justify-center">
                         <img className="h-[60px] w-[60px] md:h-[100px] md:w-[100px]" src="https://i.ibb.co/cwWsXtm/logo-home-png-7425.png" alt="" />
                         <h2 className="text-white font-semibold text-xl justify-center">Home Services</h2>

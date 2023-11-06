@@ -17,9 +17,10 @@ const AddService = () => {
         const area = form.area.value;
         const price = form.price.value;
         const description = form.description.value;
+        const profile=form.profile.value;
 
-        console.log(name, email, image, service_name, area, price, description);
-        const addService = { name, email, image, service_name, area, price, description }
+        console.log(name, email, image, service_name, area, price, description,profile);
+        const addService = { name, email, image, service_name, area, price, description,profile }
         //send data
         fetch("http://localhost:5000/service", {
             method: "POST",
@@ -117,7 +118,7 @@ const AddService = () => {
                                     <label className="label">
                                         <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Email Photo URL</span>
                                     </label>
-                                    <input type="profile" name="profile" defaultValue={`${user.photoURL}`} readOnly className="input input-bordered text-black" required />
+                                    <input type="text" name="profile" defaultValue={`${user.photoURL}`} readOnly className="input input-bordered text-black" required />
                                 </div>
 
                             {/* short description */}

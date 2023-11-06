@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
-import { AuthContext } from '../../Routes/Provider/AuthProvider';
 
 const PopularServiceCard = ({ service }) => {
-    const { user } = useContext(AuthContext)
-    const { name, image, service_name, area, price, description } = service;
+    const { name, image, service_name, area, price, description,profile } = service;
     return (
         <div>
 
@@ -16,7 +13,7 @@ const PopularServiceCard = ({ service }) => {
                 <div className="card-body">
                     <div className='flex gap-3 items-center'>
                         <div>
-                            <img src={user.photoURL} className="w-[40px] h-[40px] rounded-full" alt="" />
+                            <img src={profile} className="w-[30px] h-[30px] rounded-full" alt="" />
                         </div>
                         <div>
                             <h4 className='font-semibold text-[18px] italic'>{name}</h4>

@@ -6,6 +6,7 @@ import LogIn from "../../Pages/Login/Login";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import AddService from "../../Pages/AddService/AddService";
 import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
+import AllServices from "../../Pages/AllServices/AllServices";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         {
           path:"/addService",
           element:<PrivateRoute><AddService></AddService></PrivateRoute>
+        },
+        {
+          path:"/allService",
+          element:<AllServices></AllServices>,
+          loader:()=>fetch("http://localhost:5000/service")
         }
       ]
     },
