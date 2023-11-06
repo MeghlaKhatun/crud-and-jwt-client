@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const AllService = ({card}) => {
-    const {image,profile,name,service_name,price,area,description}=card;
+    const {_id,image,profile,name,service_name,price,area,description}=card;
     return (
         <div className="card  bg-base-100 shadow-xl">
         <div className='h-2/5 md:h-3/5'>
@@ -25,7 +26,7 @@ const AllService = ({card}) => {
             <p className='text-[18px] text-gray-600'>Area: {area}</p>
             <p className='font-semibold italic'>{description}</p>
             <div className="card-actions justify-center">
-                <button className=" bg-[#009866] border-none text-white py-3 px-5 font-semibold rounded-full">View Details</button>
+                <Link to={`/singleService/${_id}`} className=" bg-[#009866] border-none text-white py-3 px-5 font-semibold rounded-full">View Details</Link>
             </div>
         </div>
     </div>
