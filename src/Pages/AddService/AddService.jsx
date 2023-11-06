@@ -5,38 +5,41 @@ import Swal from "sweetalert2";
 
 const AddService = () => {
 
-    const {user}=useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
-    const handleAddService=e=>{
+    const handleAddService = e => {
         e.preventDefault();
-        const form=e.target;
-        const name=form.name.value;
-        const email=form.email.value;
-        const image=form.photo.value;
-        const service_name=form.serviceName.value;
-        const area=form.area.value;
-        const price=form.price.value;
-        const description=form.description.value;
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const image = form.photo.value;
+        const service_name = form.serviceName.value;
+        const area = form.area.value;
+        const price = form.price.value;
+        const description = form.description.value;
 
-        console.log(name,email,image,service_name,area,price,description);
-        const addService={name,email,image,service_name,area,price,description}
+        console.log(name, email, image, service_name, area, price, description);
+        const addService = { name, email, image, service_name, area, price, description }
         //send data
-        fetch("http://localhost:5000/service",{
-            method:"POST",
-            headers:{
-                'content-type':'application/json'
+        fetch("http://localhost:5000/service", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(addService)
+            body: JSON.stringify(addService)
         })
-        .then(res =>res.json())
-        .then(data=>{
-            console.log(data)
-            Swal.fire(
-                'Success!',
-                'Service added successfully',
-                'success'
-            );
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire(
+                        'Success!',
+                        'Service added successfully',
+                        'success'
+                    );
+                }
+
+            })
     }
 
 
@@ -109,17 +112,25 @@ const AddService = () => {
 
                             </div>
 
+                            {/* photo url */}
+                            <div className="form-control pt-2 ">
+                                    <label className="label">
+                                        <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Email Photo URL</span>
+                                    </label>
+                                    <input type="profile" name="profile" defaultValue={`${user.photoURL}`} readOnly className="input input-bordered text-black" required />
+                                </div>
 
                             {/* short description */}
-                            <div className="mb-8">
-                                <div className="form-control pt-2">
-                                    <label className="label">
-                                        <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Description</span>
-                                    </label>
-                                    <textarea name="description" id="" cols="35" rows="5" className="border-2 rounded-lg outline-none text-black"></textarea>
+                            
+                                <div className="mb-8">
+                                    <div className="form-control pt-2">
+                                        <label className="label">
+                                            <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Description</span>
+                                        </label>
+                                        <textarea name="description" id="" cols="35" rows="5" className="border-2 rounded-lg outline-none text-black"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-
+                                
                             <input type="submit" value="Add Service" className="py-3 cursor-pointer rounded-full md:font-bold hover:text-[#009866] hover:bg-gray-700 btn-block border bg-[#009866] text-white" />
 
                         </form>

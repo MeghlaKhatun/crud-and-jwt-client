@@ -34,7 +34,7 @@ const Navbar = () => {
                                 <ul className=" flex gap-8  menu-horizontal text-white font-bold text-[16px] ">
                                     {/* Navbar menu content here */}
                                     <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
-                                    <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
+                                    <li className="hover:underline"><NavLink to={"/allService"}>All-Service</NavLink></li>
                                     {/* <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li> */}
                                     {
 
@@ -93,7 +93,7 @@ const Navbar = () => {
                         <ul className="menu p-4 w-80 min-h-full bg-base-200">
                             
                             <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
-                                    <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
+                                    <li className="hover:underline"><NavLink to={"/allService"}>All-Service</NavLink></li>
                                     {
 
                                         user?.email && <div className="dropdown dropdown-end">
