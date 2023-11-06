@@ -4,7 +4,7 @@ import Home from "../../Home/Home";
 import Registration from "../../Pages/Registration/Registration";
 import LogIn from "../../Pages/Login/Login";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
-import DashBoard from "../../Pages/DashBoard/DashBoard";
+import AddService from "../../Pages/AddService/AddService";
 
 const router = createBrowserRouter([
     {
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
           element:<LogIn></LogIn>
         },
         {
-          path:"/dashboard",
-          element:<DashBoard></DashBoard>
+          path:"/addService",
+          element:<AddService></AddService>
         }
       ]
     },

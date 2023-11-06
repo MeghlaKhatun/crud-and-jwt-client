@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -8,6 +8,15 @@ import { FcGoogle } from "react-icons/fc";
 
 const LogIn = () => {
     const { signInUser,googleLogIn } = useContext(AuthContext)
+
+
+    // navigate
+    const navigate=useNavigate()
+    const location=useLocation()
+    console.log(location);
+    
+
+
 
     const handleLogin = e => {
         e.preventDefault();
@@ -25,6 +34,7 @@ const LogIn = () => {
                     'Your LogIn Successful',
                     'success'
                 );
+                navigate(location.state ? location.state : "/")
             })
             .catch(error => {
                 console.log(error)
