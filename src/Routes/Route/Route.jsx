@@ -7,6 +7,7 @@ import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import AddService from "../../Pages/AddService/AddService";
 import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
 import AllServices from "../../Pages/AllServices/AllServices";
+import SingleService from "../../Pages/SingleService/SingleService";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
           path:"/allService",
           element:<AllServices></AllServices>,
           loader:()=>fetch("http://localhost:5000/service")
+        },
+        {
+          path:"/singleService/:id",
+          element:<PrivateRoute><SingleService></SingleService></PrivateRoute>,
+          loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
         }
       ]
     },
