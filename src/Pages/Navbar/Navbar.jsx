@@ -28,7 +28,7 @@ const Navbar = () => {
                                 </label>
                             </div>
                             <img className="h-[60px] w-[60px] rounded-full" src="https://i.ibb.co/cwWsXtm/logo-home-png-7425.png" alt="" />
-                            <div className="flex-1  text-white text-xl font-medium ">Home Services Exchange</div>
+                            <div className="flex-1  text-white text-xl font-medium items-end"><span className="text-2xl">H</span>ome  <span className="text-2xl">  S</span>ervices</div>
 
                             <nav className="flex-none hidden lg:block">
                                 <ul className=" flex gap-8  menu-horizontal text-white font-bold text-[16px] ">
@@ -37,7 +37,18 @@ const Navbar = () => {
                                     <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
                                     {/* <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li> */}
                                     {
-                                        user?.email && <li className="hover:underline"><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+
+                                        user?.email && <div className="dropdown dropdown-end">
+                                            <li tabIndex={0} className="cursor-pointer hover:underline">Dashboard</li>
+                                            <ul tabIndex={0} className="dropdown-content hover:text-black mt-5 z-[1] menu p-2 text-black shadow bg-white  rounded-box w-40">
+                                                <li className="hover:underline"><NavLink to={"/addService"}>Add-Service</NavLink></li>
+                                                <li className="hover:underline"><NavLink to={"/myServices"}> My-services</NavLink></li>
+                                                <li className="hover:underline"><NavLink to={"/mySchedules"}>  My-schedules</NavLink></li>
+
+
+                                            </ul>
+                                        </div>
+
                                     }
 
                                     {/* login and logout */}
@@ -53,7 +64,7 @@ const Navbar = () => {
                                             </div>
                                     }
                                 </ul>
-                              
+
                             </nav>
 
                             {/* profile and name */}
@@ -78,24 +89,37 @@ const Navbar = () => {
 
                     </div>
                     <div className="drawer-side">
-                        <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay "></label>
+                        <li htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay "></li>
                         <ul className="menu p-4 w-80 min-h-full bg-base-200">
-                        <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
-                                    <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
-                                    <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li>
-                                    {/* <li  className="hover:underline"><NavLink to={"/login"}>Login</NavLink></li> */}
-                                    {
-                                        user ?
-                                            <div >
-                                                <li onClick={handleLogOut} className="hover:underline"><NavLink >LogOut</NavLink></li>
-                                            </div>
-                                            :
-                                            <div>
-
-                                                <li className="hover:underline"><NavLink to={"/login"}>LogIn</NavLink></li>
-                                            </div>
-                                    }
                             
+                            <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
+                                    <li className="hover:underline"><NavLink to={"/service"}>Service</NavLink></li>
+                                    {
+
+                                        user?.email && <div className="dropdown dropdown-end">
+                                            <label tabIndex={0} className="cursor-pointer hover:underline">Dashboard</label>
+                                            <ul tabIndex={0} className="dropdown-content hover:text-black mt-5 z-[1] menu p-2 text-black shadow bg-white  rounded-box w-40">
+                                                <li className="hover:underline"><NavLink to={"/addService"}>Add-Service</NavLink></li>
+                                                <li className="hover:underline"><NavLink to={"/myServices"}> My-services</NavLink></li>
+                                                <li className="hover:underline"><NavLink to={"/mySchedules"}>  My-schedules</NavLink></li>
+
+
+                                            </ul>
+                                        </div>
+
+                                    }
+                            {
+                                user ?
+                                    <div >
+                                        <li onClick={handleLogOut} className="hover:underline"><NavLink >LogOut</NavLink></li>
+                                    </div>
+                                    :
+                                    <div>
+
+                                        <li className="hover:underline"><NavLink to={"/login"}>LogIn</NavLink></li>
+                                    </div>
+                            }
+
                         </ul>
                     </div>
                 </div>
