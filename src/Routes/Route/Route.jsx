@@ -5,6 +5,7 @@ import Registration from "../../Pages/Registration/Registration";
 import LogIn from "../../Pages/Login/Login";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import AddService from "../../Pages/AddService/AddService";
+import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/addService",
-          element:<AddService></AddService>
+          element:<PrivateRoute><AddService></AddService></PrivateRoute>
         }
       ]
     },
