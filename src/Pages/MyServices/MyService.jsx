@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
 import { FaTrash,FaPen } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const MyService = ({ card,handleDelete }) => {
 
     
     const {_id,  image, service_name, price, description, } = card;
-
-
-    
-    
-    
-
 
 
     return (
@@ -26,7 +21,7 @@ const MyService = ({ card,handleDelete }) => {
                     <h2 className="text-[18px] font-semibold">Price: ${price}</h2>
                     <p>{description}</p>
                     <div className="card-actions justify-center">
-                        <button className="bg-[#009866] border-none text-white py-3 px-5 font-semibold rounded-lg flex items-center gap-1 justify-center"><FaPen></FaPen> Edit</button>
+                        <Link to={`/myServices/updateService/${_id}`} className="bg-[#009866] border-none text-white py-3 px-5 font-semibold rounded-lg flex items-center gap-1 justify-center"><FaPen></FaPen> Edit</Link>
                         <button onClick={()=>handleDelete(_id)}  className="bg-red-900 border-none text-white py-3 px-5 font-semibold rounded-lg flex items-center gap-1 justify-center "><FaTrash></FaTrash> Delete</button>
                     </div>
                 </div>
