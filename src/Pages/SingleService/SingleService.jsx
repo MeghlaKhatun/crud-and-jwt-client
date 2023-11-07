@@ -9,22 +9,22 @@ const SingleService = () => {
     const { user } = useContext(AuthContext)
 
     const singeService = useLoaderData();
-    const { image, service_name, email, profile, name, price, description } = singeService;
+    const { image, service_name, email, profile, name, price, description,area } = singeService;
 
-    const handleBooking=e=>{
+    const handleBooking = e => {
         e.preventDefault();
-        const form=e.target;
-        const serviceName=form.serviceName.value;
-        const proEmail=form.proEmail.value;
+        const form = e.target;
+        const serviceName = form.serviceName.value;
+        const proEmail = form.proEmail.value;
         const user = form.user.value;
         const price = form.price.value;
         const date = form.date.value;
         const instruction = form.instruction.value;
-        console.log(serviceName,proEmail,user,price,date,instruction)
-        const addBookings={serviceName,proEmail,user,price,date,instruction}
+        console.log(serviceName, proEmail, user, price, date, instruction)
+        const addBookings = { serviceName, proEmail, user, price, date, instruction }
 
-         //send data
-         fetch("http://localhost:5000/booking", {
+        //send data
+        fetch("http://localhost:5000/booking", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -34,22 +34,22 @@ const SingleService = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if (data.insertedId  ) {
+                if (data.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
                         title: "Booking Successful",
                         showConfirmButton: false,
                         timer: 1500
-                      });
-                }else{
+                    });
+                } else {
                     Swal.fire({
                         position: "top-end",
                         icon: "error",
                         title: "Oppss sorry!!!!",
                         showConfirmButton: false,
                         timer: 1500
-                      });
+                    });
                 }
 
             })
@@ -61,8 +61,29 @@ const SingleService = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="max-w-4xl mx-auto my-10 px-10">
-                <div className=" bg-base-100 md:flex h-[300px] items-center shadow-2xl">
+
+            {/* service provider information */}
+
+            <div className="max-w-4xl mx-auto mt-10">
+                <h2 className="text-center text-[#215946] text-2xl italic font-bold">Provider Information</h2>
+                <div className="card w-80 mx-auto bg-base-100 shadow-2xl mt-8">
+                    <div className="px-10 pt-10 w-1/2 mx-auto">
+                        <img src={profile} alt="Shoes" className="rounded-full" />
+                    </div>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title">{name}</h2>
+                        <p>{area}</p>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+            {/* view details section */}
+            <div className="max-w-4xl mx-auto  px-10">
+            <h2 className="text-center text-[#215946] text-2xl italic font-bold my-10">Service Details</h2>
+                <div className=" bg-base-100 md:flex h-[300px] items-center shadow-2xl">              
                     <div className=' flex h-full items-center flex-1'>
                         <img className='md:rounded-l-lg h-full w-full' src={image} alt="" />
                     </div>
@@ -122,19 +143,19 @@ const SingleService = () => {
 
                                         <div className="form-control pt-2 flex-1">
                                             <input type="date" name="date" className="input input-bordered text-black" required />
-                                        </div> 
+                                        </div>
 
                                         <div className="form-control pt-2 flex-1">
                                             <textarea name="instruction" id="" cols="10" rows="3" placeholder="Special Instruction" className="border-2 rounded-lg outline-none text-black"></textarea>
                                         </div>
 
                                         <div className="flex items-center justify-center mt-4">
-                                        <input value="Purchase" type="submit" className="bg-[#009866] border-none italic text-white py-2 md:py-3 px-4 md:px-5 font-semibold rounded-lg" />
-                                    </div>
+                                            <input value="Purchase" type="submit" className="bg-[#009866] border-none italic text-white py-2 md:py-3 px-4 md:px-5 font-semibold rounded-lg" />
+                                        </div>
 
                                     </form>
 
-                                    
+
 
                                 </div>
                             </dialog>
