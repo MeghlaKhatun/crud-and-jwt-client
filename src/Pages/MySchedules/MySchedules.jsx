@@ -11,9 +11,9 @@ const MySchedules = () => {
 
     const { user } = useContext(AuthContext)
 
-    const mySchedules= useLoaderData();
+    const mySchedules = useLoaderData();
     const [schedules, setSchedules] = useState([]);
-    
+
     // console.log(mySchedules)
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const MySchedules = () => {
         setSchedules(bookingFilter)
         console.log(bookingFilter)
 
-    }, [mySchedules,user.email])
+    }, [mySchedules, user.email])
 
     return (
         <div>
@@ -31,15 +31,25 @@ const MySchedules = () => {
                 </title>
             </Helmet>
             <Navbar></Navbar>
-            <h2 className="text-center text-[#215946] text-2xl italic md:text-3xl lg:text-5xl  font-bold  my-4">My Bookings</h2>
+            <div>
+                <h2 className="text-center text-[#215946] text-2xl italic md:text-3xl lg:text-5xl  font-bold  my-4">My Bookings</h2>
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 px-10 lg:px-0">
-                    
-                    {
-                        schedules?.map(scheduleCard=><MySchedule key={scheduleCard._id} scheduleCard={scheduleCard}></MySchedule>)
-                    }
-                    
+                <div>
+
+                   {
+                    schedules.length == 0 ? <p className="text-center font-bold text-2xl">no data found</p>: <div  className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 px-10 lg:px-0">{
+                        schedules?.map(scheduleCard => <MySchedule key={scheduleCard._id} scheduleCard={scheduleCard}></MySchedule>)
+                    }</div>
+                   }
+
                 </div>
+            </div>
+
+            {/* My Pending works  */}
+            <div>
+                <h2 className="text-center text-[#215946] text-2xl italic md:text-3xl lg:text-5xl  font-bold  my-4">My Pending works </h2>
+                
+            </div>
 
             <Footer></Footer>
         </div>

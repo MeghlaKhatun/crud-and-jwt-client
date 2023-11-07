@@ -11,7 +11,13 @@ const SingleService = () => {
     const { user } = useContext(AuthContext)
 
     const singeService = useLoaderData();
-    const { image, service_name, email, profile, name, price, description, area } = singeService;
+    const { _id, image, service_name, email, profile, name, price, description, area } = singeService;
+
+   const closeModal =()=>{
+        const modal = document.getElementById('my_modal_3');
+        modal.close();
+   }
+      
 
     const handleBooking = e => {
         e.preventDefault();
@@ -23,8 +29,9 @@ const SingleService = () => {
         const date = form.date.value;
         const instruction = form.instruction.value;
         const serviceImage = form.serviceImage.value;
+        const myServiceId = _id;
         console.log(serviceName, proEmail, user, price, date, instruction)
-        const addBookings = { serviceName, proEmail, user, price, date, instruction,serviceImage }
+        const addBookings = { serviceName, proEmail, user, price, date, instruction,serviceImage,myServiceId }
 
         //send data
         fetch("http://localhost:5000/booking", {
@@ -45,6 +52,7 @@ const SingleService = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    closeModal();
                 } else {
                     Swal.fire({
                         position: "top-end",

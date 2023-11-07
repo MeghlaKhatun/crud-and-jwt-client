@@ -88,10 +88,16 @@ const MyServices = () => {
             <Navbar></Navbar>
 
             <h2 className="text-center text-[#215946] text-2xl italic md:text-3xl lg:text-5xl  font-bold  my-4">My Service</h2>
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 px-10 lg:px-0">
+                
+                <div>
+                    {
+                        myCards.length == 0 ? <p className="text-center font-bold text-xl">No data found</p>:
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 px-10 lg:px-0">
                     
                     {
                         myCards?.map(card=><MyService key={card._id} card={card} handleDelete={handleDelete}></MyService>)
+                    }
+                </div>
                     }
                 </div>
 
