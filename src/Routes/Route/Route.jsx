@@ -8,6 +8,7 @@ import AddService from "../../Pages/AddService/AddService";
 import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
 import AllServices from "../../Pages/AllServices/AllServices";
 import SingleService from "../../Pages/SingleService/SingleService";
+import MyServices from "../../Pages/MyServices/MyServices";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
           path:"/singleService/:id",
           element:<PrivateRoute><SingleService></SingleService></PrivateRoute>,
           loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+        },
+        {
+          path:"/myServices",
+          element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
+          loader:()=>fetch("http://localhost:5000/booking")
         }
       ]
     },

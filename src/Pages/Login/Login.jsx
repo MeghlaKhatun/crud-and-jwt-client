@@ -34,7 +34,7 @@ const LogIn = () => {
                     'Your LogIn Successful',
                     'success'
                 );
-                navigate(location.state ? location.state : "/")
+                navigate(location.state ? location.state: "/")
             })
             .catch(error => {
                 console.log(error)
@@ -57,6 +57,7 @@ const LogIn = () => {
                 'Google LogIn Successful',
                 'success'
             )
+            navigate(location.state ? location.state: "/")
         })
         .catch(error => {
             console.error(error);

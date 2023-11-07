@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
 
@@ -47,6 +48,9 @@ const AddService = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Home Exchange | Add-Service</title>
+            </Helmet>
             <div className="w-full  mb-8 md:mb-10 lg:mb-20 bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://i.ibb.co/svw5KdF/house-1477041-1280.jpg)', objectFit: "cover" }}>
                 <Navbar></Navbar>
                 <div className="max-w-5xl text-center text-neutral-content mx-auto items-center ">
@@ -116,7 +120,7 @@ const AddService = () => {
                             {/* photo url */}
                             <div className="form-control pt-2 ">
                                     <label className="label">
-                                        <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Email Photo URL</span>
+                                        <span className="label-text font-semibold text-white text-[16px] md:text-[18px]">Provider Photo URL</span>
                                     </label>
                                     <input type="text" name="profile" defaultValue={`${user.photoURL}`} readOnly className="input input-bordered text-black" required />
                                 </div>

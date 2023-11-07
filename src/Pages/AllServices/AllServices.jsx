@@ -28,7 +28,7 @@ const AllServices = () => {
     return (
         <div>
             <Helmet>
-                <title>All-Services</title>
+                <title>Home Exchange | All-Services</title>
             </Helmet>
             <Navbar></Navbar>
             <div className="max-w-4xl mx-auto grid grid-cols-1 gap-8 my-20 px-10">
