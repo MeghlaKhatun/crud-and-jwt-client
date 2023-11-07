@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SingleService = () => {
 
@@ -9,6 +10,52 @@ const SingleService = () => {
 
     const singeService = useLoaderData();
     const { image, service_name, email, profile, name, price, description } = singeService;
+
+    const handleBooking=e=>{
+        e.preventDefault();
+        const form=e.target;
+        const serviceName=form.serviceName.value;
+        const proEmail=form.proEmail.value;
+        const user = form.user.value;
+        const price = form.price.value;
+        const date = form.date.value;
+        const instruction = form.instruction.value;
+        console.log(serviceName,proEmail,user,price,date,instruction)
+        const addBookings={serviceName,proEmail,user,price,date,instruction}
+
+         //send data
+         fetch("http://localhost:5000/booking", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addBookings)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId  ) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Booking Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }else{
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oppss sorry!!!!",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+
+            })
+
+
+    }
 
 
     return (
@@ -55,7 +102,7 @@ const SingleService = () => {
                                         <img src={image} alt="" />
                                     </div>
 
-                                    <form>
+                                    <form onSubmit={handleBooking}>
 
                                         <div className="form-control pt-2 flex-1">
                                             <input type="text" name="serviceName" defaultValue={service_name} readOnly className="input font-bold input-bordered text-gray-600" required />
@@ -75,17 +122,19 @@ const SingleService = () => {
 
                                         <div className="form-control pt-2 flex-1">
                                             <input type="date" name="date" className="input input-bordered text-black" required />
-                                        </div>
+                                        </div> 
 
                                         <div className="form-control pt-2 flex-1">
-                                            <textarea name="description" id="" cols="10" rows="3" placeholder="Special Instruction" className="border-2 rounded-lg outline-none text-black"></textarea>
+                                            <textarea name="instruction" id="" cols="10" rows="3" placeholder="Special Instruction" className="border-2 rounded-lg outline-none text-black"></textarea>
                                         </div>
+
+                                        <div className="flex items-center justify-center mt-4">
+                                        <input value="Purchase" type="submit" className="bg-[#009866] border-none italic text-white py-2 md:py-3 px-4 md:px-5 font-semibold rounded-lg" />
+                                    </div>
 
                                     </form>
 
-                                    <div className="flex items-center justify-center mt-4">
-                                        <button className="bg-[#009866] border-none italic text-white py-2 md:py-3 px-4 md:px-5 font-semibold rounded-lg">Purchase</button>
-                                    </div>
+                                    
 
                                 </div>
                             </dialog>
