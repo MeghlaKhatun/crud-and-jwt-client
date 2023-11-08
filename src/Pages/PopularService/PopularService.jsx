@@ -9,10 +9,10 @@ const PopularService = () => {
     // const [cards,setCards]=useState(4)
 
     useEffect(() => {
-        fetch ("http://localhost:5000/service")
+        fetch ("https://ass-crud-and-jwt-server.vercel.app/service")
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setServices(data)
             })
     }, [])

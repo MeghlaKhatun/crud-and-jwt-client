@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import Footer from "../Footer/Footer";
 
 const AddService = () => {
 
@@ -23,7 +24,7 @@ const AddService = () => {
         console.log(name, email, image, service_name, area, price, description,profile);
         const addService = { name, email, image, service_name, area, price, description,profile }
         //send data
-        fetch("http://localhost:5000/service", {
+        fetch("https://ass-crud-and-jwt-server.vercel.app/service", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -144,8 +145,9 @@ const AddService = () => {
 
                     </div>
                 </div>
+              
             </div>
-
+            <Footer></Footer>
         </div>
     );
 };

@@ -41,7 +41,7 @@ const LogIn = () => {
                 navigate(location.state ? location.state: "/");
 
 
-                axios.post('http://localhost:5000/jwt',user)
+                axios.post('https://ass-crud-and-jwt-server.vercel.app/jwt',user)
                 .then(res=>{
                    console.log(res.data)
                 })
@@ -83,7 +83,7 @@ const LogIn = () => {
     return (
         <div>
             <Helmet>
-                <title>LogIn</title>
+                <title>Home Exchange | LogIn</title>
             </Helmet>
 
             <Navbar></Navbar>

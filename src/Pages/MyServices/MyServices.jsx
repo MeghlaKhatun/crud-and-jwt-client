@@ -42,7 +42,7 @@ const MyServices = () => {
             const info={_id,email}
 
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/service`, {
+                fetch(`https://ass-crud-and-jwt-server.vercel.app/service`, {
                     method: 'DELETE',
                     headers:{
                         "content-type":"application/json"
@@ -59,7 +59,7 @@ const MyServices = () => {
                                 'success'
                             )
                             
-                                fetch("http://localhost:5000/service")
+                                fetch("https://ass-crud-and-jwt-server.vercel.app/service")
                                 .then(res=>res.json())
                                 .then(data=>{
                                     console.log(data)

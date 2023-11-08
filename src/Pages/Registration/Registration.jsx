@@ -54,7 +54,7 @@ const Registration = () => {
     return (
         <div>
           <Helmet>
-            <title>Registration</title>
+            <title>Home Exchange | Registration</title>
           </Helmet>
         
         <Navbar></Navbar>

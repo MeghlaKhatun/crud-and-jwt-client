@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import Footer from "../Footer/Footer";
 
 const UpdateService = () => {
 
@@ -25,7 +26,7 @@ const UpdateService = () => {
         console.log(name, email, image, service_name, area, price, description, profile);
         const updateService = { name, email, image, service_name, area, price, description, profile }
         //send data
-        fetch(`http://localhost:5000/service/${_id}`, {
+        fetch(`https://ass-crud-and-jwt-server.vercel.app/service/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -146,7 +147,7 @@ const UpdateService = () => {
                     </div>
                 </div>
             </div>
-
+            <Footer></Footer>
         </div>
 
     );

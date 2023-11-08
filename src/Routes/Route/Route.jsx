@@ -36,26 +36,26 @@ const router = createBrowserRouter([
         {
           path:"/allService",
           element:<AllServices></AllServices>,
-          loader:()=>fetch("http://localhost:5000/service")
+          loader:()=>fetch("https://ass-crud-and-jwt-server.vercel.app/service")
         },
         {
           path:"/singleService/:id",
           element:<PrivateRoute><SingleService></SingleService></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+          loader:({params})=>fetch(`https://ass-crud-and-jwt-server.vercel.app/service/${params.id}`)
         },
         {
           path:"/myServices",
           element:<PrivateRoute><MyServices></MyServices></PrivateRoute>,
-          loader:()=>fetch("http://localhost:5000/service")
+          loader:()=>fetch("https://ass-crud-and-jwt-server.vercel.app/service")
         },
         {
           path:"/myServices/updateService/:id",
           element:<UpdateService></UpdateService>,         
-          loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+          loader:({params})=>fetch(`https://ass-crud-and-jwt-server.vercel.app/service/${params.id}`)
         },{
           path:"/mySchedules",
           element:<PrivateRoute><MySchedules></MySchedules></PrivateRoute>,
-          loader:()=>fetch("http://localhost:5000/booking")
+          loader:()=>fetch("https://ass-crud-and-jwt-server.vercel.app/booking")
         }
       ]
     },

@@ -1,8 +1,8 @@
-# React + Vite
+# Live link: https://crud-and-jwt.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Project five features
+- we click on the 'add service' button in the add service form to store a data in the mongodb database.
+- Click on the view details button to show a card details.
+- Click on card edit button in the my service route to show an update form and we can update that card service here.Also click on the delete button to delete a card in the my service route.
+- We also search card in the all service page.
+- we hover the testimonials card to show a review.

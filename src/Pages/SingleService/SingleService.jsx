@@ -1,23 +1,45 @@
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import Footer from "../Footer/Footer";
 import { Helmet } from "react-helmet-async";
+import OtherService from "./OtherService";
 
 const SingleService = () => {
 
     const { user } = useContext(AuthContext)
 
     const singeService = useLoaderData();
+
+    const [allService, setAllService] = useState([])
+    const [otherService, setOtherService] = useState([]);
+    // console.log("all service",allService)
+    // console.log("other Service",otherService)
+
+    useEffect(() => {
+        fetch("https://ass-crud-and-jwt-server.vercel.app/service")
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setAllService(data)
+            })
+
+        const otherFilter = allService?.filter(other => other?.email === singeService?.email);
+        setOtherService(otherFilter)
+
+    }, [allService, singeService?.email])
+
     const { _id, image, service_name, email, profile, name, price, description, area } = singeService;
 
-   const closeModal =()=>{
+
+
+    const closeModal = () => {
         const modal = document.getElementById('my_modal_3');
         modal.close();
-   }
-      
+    }
+
 
     const handleBooking = e => {
         e.preventDefault();
@@ -31,10 +53,10 @@ const SingleService = () => {
         const serviceImage = form.serviceImage.value;
         const myServiceId = _id;
         console.log(serviceName, proEmail, user, price, date, instruction)
-        const addBookings = { serviceName, proEmail, user, price, date, instruction,serviceImage,myServiceId }
+        const addBookings = { serviceName, proEmail, user, price, date, instruction, serviceImage, myServiceId }
 
         //send data
-        fetch("http://localhost:5000/booking", {
+        fetch("https://ass-crud-and-jwt-server.vercel.app/booking", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +101,7 @@ const SingleService = () => {
             {/* service provider information */}
 
             <div className="max-w-4xl mx-auto mt-10">
-                <h2 className="text-center text-[#215946] text-2xl italic font-bold">Provider Information</h2>
+                <h2 className="text-center text-[#215946] text-2xl lg:text-3xl italic font-bold">Provider Information</h2>
                 <div className="card w-80 mx-auto bg-base-100 shadow-2xl mt-8">
                     <div className="px-10 pt-10 w-1/2 mx-auto">
                         <img src={profile} alt="Shoes" className="rounded-full" />
@@ -96,7 +118,7 @@ const SingleService = () => {
 
             {/* view details section */}
             <div className="max-w-4xl mx-auto mb-10  px-10">
-                <h2 className="text-center text-[#215946] text-2xl italic font-bold my-10">Service Details</h2>
+                <h2 className="text-center text-[#215946] text-2xl lg:text-3xl italic font-bold my-10">Service Details</h2>
                 <div className=" bg-base-100 md:flex h-[300px] items-center shadow-2xl">
                     <div className=' flex h-full items-center flex-1'>
                         <img className='md:rounded-l-lg h-full w-full' src={image} alt="" />
@@ -150,7 +172,7 @@ const SingleService = () => {
                                         <div className="form-control pt-2 flex-1">
                                             <input type="text" name="proEmail" defaultValue={email} readOnly className="input font-bold input-bordered text-gray-600" required />
                                         </div>
-                                       
+
                                         <div className="form-control pt-2 flex-1">
                                             <input type="text" name="price" defaultValue={price} className="input font-bold input-bordered text-gray-600" required />
                                         </div>
@@ -184,6 +206,24 @@ const SingleService = () => {
 
                         </div>
                     </div>
+                </div>
+
+            </div>
+
+            <div className="my-10">
+                <h2 className="text-center text-[#215946] text-2xl lg:text-3xl italic font-bold my-10">Other Service</h2>
+                <div>
+
+                    {
+                        otherService.length > 1 ? <div className="grid grid-col-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-10">
+                            {
+                                otherService?.map(other => <OtherService key={other._id} other={other}></OtherService>)
+                            }
+                        </div> : <p className="text-xl font-bold text-center mt-4">Service Not Available</p>
+                    }
+
+
+
                 </div>
 
             </div>

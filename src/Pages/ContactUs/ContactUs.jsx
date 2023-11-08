@@ -15,8 +15,8 @@ const ContactUs = () => {
                     <div>
                         <textarea placeholder="Message" className="w-full py-3 pl-3 border-2 border-gray-600 outline-none mt-4" id="" cols="30" rows="10" required></textarea>
                     </div>
-                    <div>
-                        <input value="Submit" className="bg-[#009866] border-none text-white py-2 md:py-3 px-4 text-center md:px-5 font-semibold cursor-pointer"/>
+                    <div className="flex justify-center md:justify-start mt-4">
+                        <input value="Submit" className="bg-[#009866] border-none text-white py-2 outline-none md:py-3 px-4 text-center md:px-5 font-semibold cursor-pointer"/>
                     </div>
                 </form>
             </div>
