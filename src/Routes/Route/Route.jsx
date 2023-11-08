@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         {
           path:"/addService",
           element:<PrivateRoute><AddService></AddService></PrivateRoute>
-        },
+        },       
         {
           path:"/allService",
           element:<AllServices></AllServices>,

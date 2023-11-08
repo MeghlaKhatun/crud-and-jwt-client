@@ -15,18 +15,16 @@ const SingleService = () => {
 
     const [allService, setAllService] = useState([])
     const [otherService, setOtherService] = useState([]);
-    // console.log("all service",allService)
-    // console.log("other Service",otherService)
+    
 
     useEffect(() => {
         fetch("https://ass-crud-and-jwt-server.vercel.app/service")
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 setAllService(data)
             })
 
-        const otherFilter = allService?.filter(other => other?.email === singeService?.email);
+        const otherFilter = allService?.filter(other => other?.email === singeService?.email && singeService._id != other._id);
         setOtherService(otherFilter)
 
     }, [allService, singeService?.email])
@@ -210,20 +208,18 @@ const SingleService = () => {
 
             </div>
 
-            <div className="my-10">
+            <div className="mt-80 mb-10 md:my-10">
                 <h2 className="text-center text-[#215946] text-2xl lg:text-3xl italic font-bold my-10">Other Service</h2>
                 <div>
-
                     {
-                        otherService.length > 1 ? <div className="grid grid-col-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-10">
-                            {
-                                otherService?.map(other => <OtherService key={other._id} other={other}></OtherService>)
-                            }
-                        </div> : <p className="text-xl font-bold text-center mt-4">Service Not Available</p>
+                        otherService.length > 1 ?
+                            <div className="grid grid-col-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-10">
+                                {
+                                    otherService?.map(other => <OtherService key={other._id} other={other}></OtherService>)
+                                }
+                            </div> :
+                            <p className="text-xl font-bold text-center mt-4">Service Not Available</p>
                     }
-
-
-
                 </div>
 
             </div>
