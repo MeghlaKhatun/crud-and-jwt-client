@@ -4,6 +4,7 @@ import Footer from "../Pages/Footer/Footer";
 import TeamMember from "../Pages/TeamMember/TeamMember";
 import PopularService from "../Pages/PopularService/PopularService";
 import Testimonials from "../Pages/Testimonials/Testimonials";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <PopularService></PopularService>
             <TeamMember></TeamMember>
             <Testimonials></Testimonials>
+            <ContactUs></ContactUs>
             <Footer></Footer>
         </div>
     );

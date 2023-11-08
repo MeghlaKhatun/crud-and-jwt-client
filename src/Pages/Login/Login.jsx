@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 const LogIn = () => {
     const { signInUser,googleLogIn } = useContext(AuthContext)
@@ -28,13 +29,23 @@ const LogIn = () => {
         //login
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
+                const logInUser =result.user;
+                console.log(logInUser);
+                const user ={email}
+                
                 Swal.fire(
                     'Success!',
                     'Your LogIn Successful',
                     'success'
                 );
-                navigate(location.state ? location.state: "/")
+                navigate(location.state ? location.state: "/");
+
+
+                axios.post('http://localhost:5000/jwt',user)
+                .then(res=>{
+                   console.log(res.data)
+                })
+
             })
             .catch(error => {
                 console.log(error)
