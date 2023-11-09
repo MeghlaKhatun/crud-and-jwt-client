@@ -181,7 +181,7 @@ const SingleService = () => {
 
 
                                         <div className="form-control pt-2 flex-1">
-                                            <input type="date" name="date" className="input input-bordered text-black" required />
+                                            <input type="date" placeholder="date" name="date" className="input input-bordered text-black" required />
                                         </div>
 
                                         <div className="form-control pt-2 flex-1">
@@ -208,7 +208,7 @@ const SingleService = () => {
 
             </div>
 
-            <div className="mt-80 mb-10 md:my-10">
+            <div className="mt-[350px] mb-10 md:my-10">
                 <h2 className="text-center text-[#215946] text-2xl lg:text-3xl italic font-bold my-10">Other Service</h2>
                 <div>
                     {
