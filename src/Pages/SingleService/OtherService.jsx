@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const OtherService = ({ other }) => {
-    const { image, service_name, area, description } = other;
+    const {_id, image, service_name, area, description } = other;
     return (
         <div>
 
@@ -16,6 +17,9 @@ const OtherService = ({ other }) => {
                     {
                         description.length > 100 ? <p className='font-semibold italic'>{description.slice(0, 100)}.........</p> : <p className='font-semibold italic'>{description}</p>
                     }
+                    <div className="card-actions justify-center">
+                        <Link to={`/singleService/${_id}`} className=" bg-[#009866] border-none text-white py-3 px-5 font-semibold rounded-full">View Details</Link >
+                    </div>
                 </div>
             </div>
 
