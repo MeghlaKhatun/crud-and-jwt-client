@@ -19,7 +19,7 @@ const AllService = ({ card }) => {
                     </div>
 
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                     <h2 className="card-title font-bold italic">{service_name}</h2>
                     <h2 className="font-semibold md:font-bold text-[16px] bg-gray-600 py-1 px-4 rounded-full text-white italic">${price}</h2>
                 </div>

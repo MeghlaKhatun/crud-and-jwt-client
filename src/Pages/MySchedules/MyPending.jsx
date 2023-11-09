@@ -2,14 +2,15 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const MyPending = ({ pendingCard }) => {
-    const { serviceImage, serviceName, user, price } = pendingCard;
+    const {serviceImage, serviceName, user, price } = pendingCard;
 
-    // Initialize the status state with the initial value "pending"
     const [status, setStatus] = useState("pending");
 
     // Function to handle status change
     const handleStatusChange = (e) => {
         setStatus(e.target.value);
+         
+
     };
 
     return (
@@ -24,7 +25,7 @@ const MyPending = ({ pendingCard }) => {
                     <h2 className="text-[16px] font-bold">Price: ${price}</h2>
                 </div>
 
-                <div className="pendingArea ml-6 border-2 inline-block">
+                <div className="pendingArea ml-6 border-2 inline-block outline-none">
                     <select value={status} onChange={handleStatusChange}>
                         <option value="pending">Pending</option>
                         <option value="in-progress">In Progress</option>

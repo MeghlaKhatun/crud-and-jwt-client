@@ -213,7 +213,7 @@ const SingleService = () => {
                 <div>
                     {
                         otherService.length > 1 ?
-                            <div className="grid grid-col-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-10">
+                            <div className="grid grid-col-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-10">
                                 {
                                     otherService?.map(other => <OtherService key={other._id} other={other}></OtherService>)
                                 }

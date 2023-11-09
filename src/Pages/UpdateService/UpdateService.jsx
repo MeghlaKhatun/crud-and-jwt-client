@@ -4,8 +4,17 @@ import Navbar from "../Navbar/Navbar";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import Footer from "../Footer/Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
+
 
 const UpdateService = () => {
+
+    useEffect(()=>{
+        AOS.init({duration: 2000})
+    },[])
 
     const update = useLoaderData();
     const { _id, name, email, image, service_name, area, price, description, profile } = update
@@ -55,7 +64,7 @@ const UpdateService = () => {
             </Helmet>
             <div className="w-full  mb-8 md:mb-10 lg:mb-20 bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://i.ibb.co/g63nM5M/r-architecture-2g-Dwl-Iim3-Uw-unsplash-1.jpg)', objectFit: "cover" }}>
                 <Navbar></Navbar>
-                <div className="max-w-5xl text-center text-neutral-content mx-auto items-center ">
+                <div data-aos="zoom-in" className="max-w-5xl text-center text-neutral-content mx-auto items-center ">
 
                     <div className="">
                         {/* input form */}

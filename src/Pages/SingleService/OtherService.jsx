@@ -1,31 +1,21 @@
 import PropTypes from 'prop-types';
 
-const OtherService = ({other}) => {
-    const { name, image, service_name, area, price, description,profile } = other;
+const OtherService = ({ other }) => {
+    const { image, service_name, area, description } = other;
     return (
         <div>
 
-            <div className="card h-[600px] bg-base-100 shadow-xl">
-                <div className='h-2/5'>
-                    <img className='rounded-lg h-full w-full' src={image} alt="Shoes" />
+            <div className=" h-[550px] bg-base-100  shadow-[#009866] shadow-md hover:scale-105 duration-300">
+                <div className='h-1/2  shadow-2xl rounded-b-full rounded-t-lg '>
+                    <img className='rounded-b-full h-full w-full rounded-t-lg' src={image} />
                 </div>
 
                 <div className="card-body">
-                    <div className='flex gap-3 items-center'>
-                        <div>
-                            <img src={profile} className="w-[30px] h-[30px] rounded-full" alt="" />
-                        </div>
-                        <div>
-                            <h4 className='font-semibold text-[18px] italic'>{name}</h4>
-                        </div>
-
-                    </div>
-                    <div className="flex justify-between">
-                        <h2 className="card-title font-bold italic">{service_name}</h2>
-                        <h2 className="font-semibold md:font-bold text-[16px] bg-gray-600 py-1 px-4 rounded-full text-white italic">${price}</h2>
-                    </div>
-                    <p className='text-[18px] text-gray-600 italic'>Area: {area}</p>
-                    <p className='font-semibold italic'>{description}</p>
+                    <h2 className="card-title font-bold italic">{service_name}</h2>
+                    <p className='text-[18px] text-gray-600 italic'>{area}</p>
+                    {
+                        description.length > 100 ? <p className='font-semibold italic'>{description.slice(0, 100)}.........</p> : <p className='font-semibold italic'>{description}</p>
+                    }
                 </div>
             </div>
 
@@ -34,7 +24,7 @@ const OtherService = ({other}) => {
 };
 
 OtherService.propTypes = {
-    other:PropTypes.object,
+    other: PropTypes.object,
 };
 
 export default OtherService;

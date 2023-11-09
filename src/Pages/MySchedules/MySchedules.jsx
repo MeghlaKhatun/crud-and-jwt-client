@@ -15,7 +15,7 @@ const MySchedules = () => {
     console.log("schedule", schedules)
 
     const [pending, setPending] = useState([])
-    console.log("hello pending", pending);
+    // console.log("hello pending", pending);
 
     useEffect(() => {
         const bookingFilter = mySchedules?.filter(cart => cart.user == user.email);

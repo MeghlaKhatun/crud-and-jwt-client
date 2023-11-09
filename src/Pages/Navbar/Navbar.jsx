@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import '../Navbar/Navbar.css'
 import { useContext } from "react";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
+import { FaAngleDown } from "react-icons/fa";
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext)
@@ -37,11 +38,10 @@ const Navbar = () => {
                                     {/* Navbar menu content here */}
                                     <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
                                     <li className="hover:underline"><NavLink to={"/allService"}>All-Service</NavLink></li>
-                                    {/* <li className="hover:underline"><NavLink to={"/registration"}>Registration</NavLink></li> */}
                                     {
 
                                         user?.email && <div className="dropdown dropdown-end">
-                                            <li tabIndex={0} className="cursor-pointer hover:underline">Dashboard</li>
+                                            <li tabIndex={0} className="cursor-pointer hover:underline flex items-center">Dashboard<FaAngleDown></FaAngleDown> </li>
                                             <ul tabIndex={0} className="dropdown-content hover:text-black mt-5 z-[1] menu p-2 text-black shadow bg-white  rounded-box w-40">
                                                 <li className="hover:underline"><NavLink to={"/addService"}>Add-Service</NavLink></li>
                                                 <li className="hover:underline"><NavLink to={"/myServices"}> My-services</NavLink></li>
@@ -92,16 +92,16 @@ const Navbar = () => {
                     </div>
                     
 
-                    <div className="drawer-side">
+                    <div className="drawer-side z-10 ">
                         <li htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay "></li>
-                        <ul className="menu p-4 w-80 min-h-full bg-base-200">
+                        <ul className="menu py-10 px-4 w-80 gap-3 bg-base-200">
                             
                             <li className="hover:underline"><NavLink to={"/"}>Home</NavLink></li>
                                     <li className="hover:underline"><NavLink to={"/allService"}>All-Service</NavLink></li>
                                     {
 
                                         user?.email && <div className="dropdown dropdown-end">
-                                            <label tabIndex={0} className="cursor-pointer hover:underline">Dashboard</label>
+                                            <label tabIndex={0} className="cursor-pointer hover:underline flex items-center">Dashboard<FaAngleDown></FaAngleDown></label>
                                             <ul tabIndex={0} className="dropdown-content hover:text-black mt-5 z-[1] menu p-2 text-black shadow bg-white  rounded-box w-40">
                                                 <li className="hover:underline"><NavLink to={"/addService"}>Add-Service</NavLink></li>
                                                 <li className="hover:underline"><NavLink to={"/myServices"}> My-services</NavLink></li>

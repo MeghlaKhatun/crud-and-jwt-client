@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { AuthContext } from "../../Routes/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import Footer from "../Footer/Footer";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const AddService = () => {
 
     const { user } = useContext(AuthContext)
@@ -44,7 +45,9 @@ const AddService = () => {
 
             })
     }
-
+    useEffect(()=>{
+        AOS.init({duration: 2000})
+    },[])
 
 
     return (
@@ -52,9 +55,9 @@ const AddService = () => {
             <Helmet>
                 <title>Home Exchange | Add-Service</title>
             </Helmet>
-            <div className="w-full  mb-8 md:mb-10 lg:mb-20 bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://i.ibb.co/svw5KdF/house-1477041-1280.jpg)', objectFit: "cover" }}>
+            <div  className="w-full  mb-8 md:mb-10 lg:mb-20 bg-no-repeat bg-cover" style={{ backgroundImage: 'url(https://i.ibb.co/svw5KdF/house-1477041-1280.jpg)', objectFit: "cover" }}>
                 <Navbar></Navbar>
-                <div className="max-w-5xl text-center text-neutral-content mx-auto items-center ">
+                <div data-aos="zoom-in" className="max-w-5xl text-center text-neutral-content mx-auto items-center ">
 
                     <div className="">
                         {/* input form */}

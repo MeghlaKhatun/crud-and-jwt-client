@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import PopularServiceCard from "./PopularServiceCard";
 import { Link } from "react-router-dom";
 
-
 const PopularService = () => {
 
     const [services, setServices] = useState([]);
     // const [cards,setCards]=useState(4)
+
 
     useEffect(() => {
         fetch ("https://ass-crud-and-jwt-server.vercel.app/service")
